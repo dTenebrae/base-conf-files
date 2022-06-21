@@ -1,0 +1,280 @@
+    1  echo $SHELL
+    2  pwd
+    3  cd
+    4  pwd
+    5  l
+    6  ls /
+    7  ls -l /
+    8  vim
+    9  sud dnf install neovim
+   10  sudo dnf install neovim
+   11  dnf repolist
+   12  dnf search dasbus
+   13  sudo dnf install -y python3-dasbus
+   14  pwd
+   15  la
+   16  ls
+   17  mkdir
+   18  mkdir projects
+   19  cd projects/
+   20  mkdir dbus-msg
+   21  cd dbus-msg/
+   22  python
+   23  which python
+   24  sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+   25  sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   26  dnf repolist
+   27  sudo dnf install -y neovim
+   28  nvim
+   29  git
+   30  dnf install -y git
+   31  sudo dnf install -y git
+   32  git
+   33  pwd
+   34  cd ..
+   35  l
+   36  ls
+   37  git clone https://github.com/dtenebrae/dwm-dotfiles
+   38  cd d
+   39  ls
+   40  cd dwm-dotfiles/
+   41  l
+   42  ls
+   43  ls -la
+   44  cp -r config/nvim/ ~/.config/
+   45  cd ~/.config/nvim/
+   46  ls
+   47  rm coc-settings.json 
+   48  vim init.vim 
+   49  curl
+   50  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+   51  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+   52  nvim
+   53  cd
+   54  nvim .bashrc 
+   55  :Q
+   56  exit
+   57  vim .bashrc 
+   58  exit
+   59  sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxbcommon-devel xcb-util-devel
+   60  sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel xcb-util-devel
+   61  sudo dnf group install "Development Tools"
+   62  pwd
+   63  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   64  exit
+   65  rustup --verison
+   66  rustup --version
+   67  rustc --version
+   68  git clone https://github.com/alacritty/alacritty.git
+   69  cd alacritty/
+   70  rustup oeverride set stable
+   71  rustup override set stable
+   72  rustup update stable
+   73  cargo build  --release
+   74  exit
+   75  alacritty
+   76  infocmp alacritty
+   77  sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
+   78  sudo cp target/release/alacritty /usr/local/bin 
+   79  cd alacritty/
+   80  sudo cp target/release/alacritty /usr/local/bin 
+   81  sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
+   82  sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+   83  sudo desktop-file-install extra/linux/Alacritty.desktop
+   84  sudo update-desktop-database
+   85  sudo mkdir -p /usr/local/share/man/man1
+   86  gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
+   87  gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz > /dev/null
+   88  echo "source $(pwd)/extra/completions/alacritty.bash" >> ~/.bashrc
+   89  exit
+   90  l
+   91  ll
+   92  la
+   93  cp -r projects/dwm-dotfiles/config/alacritty ~/.config/
+   94  exit
+   95  vim .config/alacritty/alacritty.yml 
+   96  dnf search fira
+   97  l
+   98  vim fira.sh
+   99  #!/usr/bin/env bash
+  100  fonts_dir="${HOME}/.local/share/fonts"
+  101  if [ ! -d "${fonts_dir}" ]; then     echo "mkdir -p $fonts_dir";     mkdir -p "${fonts_dir}"; else     echo "Found fonts dir $fonts_dir"; fi
+  102  version=5.2
+  103  zip=Fira_Code_v${version}.zip
+  104  curl --fail --location --show-error https://github.com/tonsky/FiraCode/releases/download/${version}/${zip} --output ${zip}
+  105  unzip -o -q -d ${fonts_dir} ${zip}
+  106  rm ${zip}
+  107  echo "fc-cache -f"
+  108  cat << EOF >> 
+  109  #!/usr/bin/env bash
+  110  fonts_dir="${HOME}/.local/share/fonts"
+  111  if [ ! -d "${fonts_dir}" ]; then
+  112      echo "mkdir -p $fonts_dir"
+  113      mkdir -p "${fonts_dir}"
+  114  else
+  115      echo "Found fonts dir $fonts_dir"
+  116  fi
+  117  version=5.2
+  118  zip=Fira_Code_v${version}.zip
+  119  curl --fail --location --show-error https://github.com/tonsky/FiraCode/releases/download/${version}/${zip} --output ${zip}
+  120  unzip -o -q -d ${fonts_dir} ${zip}
+  121  rm ${zip}
+  122  echo "fc-cache -f"
+  123  fc-cache -f
+  124  EOF
+  125  cat > fira.sh << EOF
+  126  #!/usr/bin/env bash
+  127  fonts_dir="${HOME}/.local/share/fonts"
+  128  if [ ! -d "${fonts_dir}" ]; then
+  129      echo "mkdir -p $fonts_dir"
+  130      mkdir -p "${fonts_dir}"
+  131  else
+  132      echo "Found fonts dir $fonts_dir"
+  133  fi
+  134  version=5.2
+  135  zip=Fira_Code_v${version}.zip
+  136  curl --fail --location --show-error https://github.com/tonsky/FiraCode/releases/download/${version}/${zip} --output ${zip}
+  137  unzip -o -q -d ${fonts_dir} ${zip}
+  138  rm ${zip}
+  139  echo "fc-cache -f"
+  140  fc-cache -f
+  141  EOF
+  142  l
+  143  chmod +x fira.sh 
+  144  ./fira.sh 
+  145  vim .config/alacritty/
+  146  cd .config/alacritty/
+  147  l
+  148  rm alacritty_default.yml 
+  149  vim alacritty.yml 
+  150  exit
+  151  l
+  152  la
+  153  dnf search exa
+  154  l
+  155  rm fira.sh 
+  156  git clone https://github.com/ogham/exa.git
+  157  cd exa/
+  158  l
+  159  cargo install exa
+  160  exa
+  161  sudo dnf install tree
+  162  cd
+  163  vim .bashrc 
+  164  :q
+  165  l
+  166  la
+  167  dnf search python3
+  168  dnf search python3 | more
+  169  sudo dnf install -y python3
+  170  pip
+  171  pip3
+  172  python3
+  173  python -m venv venv
+  174  l
+  175  rm venv/
+  176  rm -rf venv exa
+  177  cd projects/dbus-msg/
+  178  ls
+  179  python -m venv venv
+  180  source venv/bin/activate
+  181  pip3 list
+  182  pip install --upgrade pip
+  183  pip3 install dasbus
+  184  pip3 list
+  185  vim main.py
+  186  vim ~/.netrc
+  187  l
+  188  deactivate
+  189  l
+  190  cd ..
+  191  l
+  192  rm -rf dbus-msg
+  193  git clone https://github.com/dtenebrae/dbus-msg
+  194  l
+  195  cd dbus-msg/
+  196  git status
+  197  python -m venv venv
+  198  git status
+  199  l
+  200  la
+  201  cat .gitignore 
+  202  cd
+  203  cargo install bat
+  204  l;
+  205  l
+  206  la
+  207  bat .netrc 
+  208  cd projects/dbus-msg/
+  209  git status
+  210  git remote -v
+  211  sudo dnf install 'dnf-command(config-manager)'
+  212  sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+  213  dnf repolist
+  214  sudo dnf install gh
+  215  cd ..
+  216  rm -rf dbus-msg
+  217  gh repo clone dTenebrae/dbus-msg
+  218  gh auth login
+  219  gh repo clone dTenebrae/dbus-msg
+  220  l
+  221  cd dbus-msg/
+  222  python -m venv venv
+  223  l
+  224  ll
+  225  pip3 list
+  226  source venv/bin/activate
+  227  pip3 list
+  228  pip install --upgrade pip
+  229  pip3 install dasbus
+  230  dbus-daemon --help
+  231  pip3 install dasbus
+  232  pip3 list
+  233  vim main.py
+  234  python main.py 
+  235  vim main.py 
+  236  dnf search python3-gi
+  237  pip3 install pgi
+  238  python main.py 
+  239  vim venv/lib64/python3.8/site-packages/dasbus/typing.py 
+  240  python main.py 
+  241  vim venv/lib64/python3.8/site-packages/dasbus/client/handler.py 
+  242  python main.py 
+  243  deactivate 
+  244  rm -rf venv/
+  245  python -m venv venv
+  246  source venv/bin/activate
+  247  pip list
+  248  pip install --upgrade pip
+  249  pip install dasbus
+  250  pip list
+  251  dnf search gobject
+  252  dnf search gobject | grep "python"
+  253  sudo dnf install -y python36-gobject
+  254  sudo dnf install -y python3-gobject
+  255  l
+  256  python main.py 
+  257  pip install PyGObject
+  258  sudo dnf upgrade
+  259  deactivate
+  260  cd ..
+  261  l
+  262  cd ..
+  263  l
+  264  cd projects/
+  265  history
+  266  history | grep gh
+  267  gh repo clone dTenebrae/base-conf-files
+  268  cp ~/.bashrc ./bashrc
+  269  cp -r ~/.config/alacritty ./
+  270  cp -r ~/.config/nvim ./
+  271  l
+  272  mv nvim alacritty bashrc base-conf-files/
+  273  l
+  274  ll
+  275  git status
+  276  cd base-conf-files/
+  277  git status
+  278  git add .
+  279  history 
+  280  history > hist.txt
